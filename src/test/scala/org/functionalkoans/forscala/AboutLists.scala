@@ -95,11 +95,10 @@ class AboutLists extends KoanSuite {
 
   koan("Lists can be 'reduced' with a mathematical operation") {
     val a = List(1, 3, 5, 7)
+    a.reduceLeft { (acc, elem) => acc + elem } should equal(16)
     // note the two _s below indicate the first and second args respectively
-    a.reduceLeft(_ + _) should equal(__)
-    a.reduceLeft(_ * _) should equal(__)
-  }
-
+    a.reduceLeft(_ * _) should equal(105)
+  } 
 
   koan("Foldleft is like reduce, but with an explicit starting value") {
     val a = List(1, 3, 5, 7)

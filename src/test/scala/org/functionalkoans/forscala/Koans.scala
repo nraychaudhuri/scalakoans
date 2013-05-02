@@ -8,6 +8,7 @@ class Koans extends Suite {
     new AboutAsserts,
     new AboutValAndVar,
     new AboutClasses,
+    new AboutConstructors,
     new AboutRange,
     new AboutTuples,
     new AboutLists,
@@ -22,12 +23,13 @@ class Koans extends Suite {
     new AboutSequencesAndArrays,
     new AboutNamedAndDefaultArguments,
     new AboutForExpressions,
-    new AboutEmptyValues,
+    // new AboutEmptyValues,
     new AboutParentClasses,
     new AboutTypeSignatures,
     new AboutTraits,
     new AboutPreconditions,
     new AboutHigherOrderFunctions,
+    new AboutParallelCollection,    
     new AboutUniformAccessPrinciple,
     new AboutLiteralBooleans,
     new AboutLiteralNumbers,
@@ -40,10 +42,8 @@ class Koans extends Suite {
     new AboutInfixTypes,
     new AboutImplicits,
     new AboutManifests,
-    new AboutTypeVariance,
-    new AboutEnumerations,
-    new AboutConstructors
-    
+    //new AboutTypeVariance,
+    new AboutEnumerations    
   )
 
   override def run(testName: Option[String], reporter: Reporter, stopper: Stopper, filter: Filter,

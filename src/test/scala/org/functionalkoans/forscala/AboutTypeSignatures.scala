@@ -68,10 +68,10 @@ class AboutTypeSignatures extends KoanSuite {
     }
 
     val intRand = new IntRandomizer
-    val rand = intRand
-    val intRand2 = rand
-    intRand2.isInstanceOf[IntRandomizer] should be(__)
+    val rand: Randomizer[_] = intRand
+    rand.asInstanceOf[IntRandomizer].draw.isInstanceOf[Int] should be(true)
   }
+
 
   koan("asInstanceOf[className] will throw a ClassCastException if a class derived from " +
     "and the class target aren't from the same inheritance branch") {

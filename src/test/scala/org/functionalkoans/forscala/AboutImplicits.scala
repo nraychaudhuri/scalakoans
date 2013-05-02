@@ -12,6 +12,7 @@ import support.KoanSuite
  * url: <a href="http://www.evolutionnext.com">http://www.evolutionnext.com</a>
  * email: <a href="mailto:dhinojosa@evolutionnext.com">dhinojosa@evolutionnext.com</a>
  * tel: 505.363.5832
+ * Edited: Nilanjan Raychaudhuri 
  */
 class AboutImplicits extends KoanSuite with ShouldMatchers {
 
@@ -25,27 +26,46 @@ class AboutImplicits extends KoanSuite with ShouldMatchers {
 
     implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
 
-    19.isOdd should be(__)
-    20.isOdd should be(__)
+    19.isOdd should be(true)
+    20.isOdd should be(false)
   }
 
   koan("""Implicits rules can be imported into your scope with an import""") {
     object MyPredef {
 
-      class KoanIntWrapper(val original: Int) {
+      implicit class KoanIntWrapper(val original: Int) {
         def isOdd = original % 2 != 0
 
         def isEven = !isOdd
       }
-
-      implicit def thisMethodNameIsIrrelevant(value: Int) = new KoanIntWrapper(value)
     }
 
     import MyPredef._
     //imported implicits come into effect within this scope
     19.isOdd should be(__)
-    20.isOdd should be(__)
+    20.isEven should be(__)
   }
+
+  koan("Implicit resolution first looks at current scope and then implicit scope") {
+    class Num(val original: Int) {
+      def isOdd = original % 2 != 0
+      def isEven = !isOdd
+    }
+    object Num {
+      implicit def thisMethodNameIsIrrelevant(value: Int) = new Num(value)
+    }
+
+    val n: Num = 10
+    n.isOdd should be(__)
+
+
+    implicit def toSomeAlwaysTrueType(i: Int) = new Num(i) {
+      override def isOdd = true
+    }
+    val nn: Num = 10
+    nn.isOdd should be(__)
+  }
+
 
   koan("""Implicits can be used to automatically convert one type to another""") {
 

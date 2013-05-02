@@ -1,4 +1,4 @@
-addCommandAlias("namaste", "~test-only org.functionalkoans.forscala.Koans")
+addCommandAlias("lets_koan", "~test-only org.functionalkoans.forscala.Koans")
 
 name := "Scala Koans"
 

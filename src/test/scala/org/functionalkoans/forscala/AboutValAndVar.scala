@@ -22,4 +22,22 @@ class AboutValAndVar extends KoanSuite {
   }
 
 
+  koan("vals may be lazy") {
+    var counter = 0
+    lazy val iAmLazyToWork = {
+      counter += 1
+      counter + 10
+    }
+
+    counter should be(0)
+
+    iAmLazyToWork should be(11)
+    counter should be(1) 
+
+    val b = iAmLazyToWork    
+    b should be(11)
+    counter should be(1) 
+
+  }
+
 }
