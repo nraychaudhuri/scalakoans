@@ -65,7 +65,7 @@ class AboutMaps extends KoanSuite {
     myMap("Houghton") = 49931
 
     myMap("Houghton") should be(__)
-    myMap("Ann Arbor") should be((__, __, __))
+    myMap("Ann Arbor") should be(__)
 
     // what happens if you change the Any to Int
 
@@ -89,10 +89,10 @@ class AboutMaps extends KoanSuite {
     val myMap = Map("OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
 
     // Cheat Code (because this is hard to illustrate): uncomment the intercept code to make this pass 
-    //intercept[NoSuchElementException] {
+    intercept[NoSuchElementException] {
 
-      myMap("MI") should be(__)
-    //}
+      myMap("MI") should be("some value")
+    }
   }
 
   koan("Map elements can be removed in multiple") {
@@ -101,26 +101,26 @@ class AboutMaps extends KoanSuite {
 
     val aNewMap = myMap -- List("MI", "OH")
 
-    aNewMap.contains("MI") should be(__)
+    aNewMap.contains("MI") should be(false)
 
-    aNewMap.contains("WI") should be(__)
-    aNewMap.size should be(__)
+    aNewMap.contains("WI") should be(true)
+    aNewMap.size should be(2)
   }
 
   koan("Map elements can be removed with a tuple") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - ("MI", "WI") // Notice: single '-' operator for tuples
 
-    aNewMap.contains("MI") should be(__)
-    aNewMap.contains("OH") should be(__)
-    aNewMap.size should be(__)
+    aNewMap.contains("MI") should be(false)
+    aNewMap.contains("OH") should be(true)
+    aNewMap.size should be(2)
   }
 
   koan("Attempted removal of nonexistent elements from a map is handled gracefully") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - "MN"
 
-    aNewMap.equals(myMap) should be(__)
+    aNewMap.equals(myMap) should be(true)
   }
 
   koan("Map equivalency is independent of order") {
@@ -128,7 +128,7 @@ class AboutMaps extends KoanSuite {
     val myMap1 = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val myMap2 = Map("WI" -> "Wisconsin", "MI" -> "Michigan", "IA" -> "Iowa", "OH" -> "Ohio")
 
-    myMap1.equals(myMap2) should be(__)
+    myMap1.equals(myMap2) should be(true)
   }
 
 

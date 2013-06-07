@@ -6,13 +6,14 @@ class AboutValAndVar extends KoanSuite {
 
   koan("vars may be reassigned") {
     var a = 5
-    a should be(10)
+    a should be(__)
 
     a = 7
     a should be(__)
   }
 
   koan("vals may not be reassigned") {
+
     val a = 5
     a should be(__)
 
@@ -29,14 +30,14 @@ class AboutValAndVar extends KoanSuite {
       counter + 10
     }
 
-    counter should be(0)
+    counter should be(__)
 
-    iAmLazyToWork should be(11)
-    counter should be(1) 
+    iAmLazyToWork should be(__)
+    counter should be(__) 
 
     val b = iAmLazyToWork    
-    b should be(11)
-    counter should be(1) 
+    b should be(__)
+    counter should be(__) 
 
   }
 

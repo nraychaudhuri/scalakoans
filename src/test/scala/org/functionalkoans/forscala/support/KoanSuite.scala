@@ -15,6 +15,12 @@ trait KoanSuite extends FunSuite with ShouldMatchers {
     throw new TestPendingException
   }
 
+  def ___ = throw new TestPendingException 
+
+  implicit def anyTo__[A](a: A) = new {
+    def  __ : Matcher[Any] = throw new TestPendingException
+  }
+
   protected class ___ extends Exception {
     override def toString = "___"
   }

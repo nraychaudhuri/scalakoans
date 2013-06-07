@@ -42,8 +42,8 @@ class AboutPartialFunctions extends KoanSuite with ShouldMatchers {
     }
 
     val whatToDo = doubleEvens orElse tripleOdds //Here we chain the partial functions together
-    whatToDo(3) should be(9)
-    whatToDo(4) should be(8)
+    whatToDo(3) should be(__)
+    whatToDo(4) should be(__)
   }
 
   koan("""The result of partial functions can have an \'andThen\' function added to the end

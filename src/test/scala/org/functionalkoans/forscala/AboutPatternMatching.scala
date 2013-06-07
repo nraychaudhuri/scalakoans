@@ -30,13 +30,11 @@ class AboutPatternMatching extends KoanSuite {
       case _ => println(stuff); 0
     }
 
-    myStuff should be(__, __, __)
+    myStuff should be(__)
 
   }
 
   koan("Pattern matching can match complex expressions") {
-
-
     def goldilocks(expr: Any) = expr match {
       case ("porridge", "Papa") => "Papa eating porridge"
       case ("porridge", "Mama") => "Mama eating porridge"
@@ -82,9 +80,9 @@ class AboutPatternMatching extends KoanSuite {
     val SleepingRegularExpression = """Sleeping Alert: bear=([^,]+),\s+source=(.+)""".r
 
     def goldilocks(expr: String) = expr match {
-      case (EatingRegularExpression(bear, source)) => "%s said someone's been eating my %s".format(bear, source)
-      case (SittingRegularExpression(bear, source)) => "%s said someone's been sitting on my %s".format(bear, source)
-      case (SleepingRegularExpression(bear, source)) => "%s said someone's been sleeping in my %s".format(bear, source)
+      case EatingRegularExpression(bear, source) => "%s said someone's been eating my %s".format(bear, source)
+      case SittingRegularExpression(bear, source) => "%s said someone's been sitting on my %s".format(bear, source)
+      case SleepingRegularExpression(bear, source) => "%s said someone's been sleeping in my %s".format(bear, source)
       case _ => "what?"
     }
 

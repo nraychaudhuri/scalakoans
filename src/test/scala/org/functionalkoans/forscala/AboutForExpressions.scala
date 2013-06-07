@@ -17,8 +17,8 @@ class AboutForExpressions extends KoanSuite {
     val someNumbers = Range(0, 10)
     var sum = 0
     // sum only the even numbers
-    for (i <- someNumbers)
-      if (i % 2 == 0) sum += i
+    for (i <- someNumbers if i % 2 == 0)       
+      sum += i
 
     sum should equal(__)
   }
@@ -31,7 +31,7 @@ class AboutForExpressions extends KoanSuite {
       y <- yValues
     }
     yield (x, y)
-    coordinates(4) should be(__, __)
+    coordinates(4) should be(__)
   }
 
 

@@ -25,7 +25,7 @@ class AboutLazySequences extends KoanSuite {
     val lazyList = strictList.view
     lazyList.map(f => f).head should be(__)
     x should be(__)
-    lazyList.map(f => f).head should be(__)
+    lazyList.map(identity).head should be(__)
     x should be(__)
   }
 

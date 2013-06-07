@@ -31,3 +31,24 @@ retrieveManaged := true
 libraryDependencies ++= Seq(
 	"org.scalatest" %% "scalatest" % "1.9.1" % "test" withSources() withJavadoc()
 )
+
+org.scalastyle.sbt.ScalastylePlugin.Settings
+
+org.scalastyle.sbt.PluginKeys.scalastyleSourceDir <<= scalaSource in Test
+
+org.scalastyle.sbt.PluginKeys.scalastyleFileFilter ~= {_ =>  
+   file => !List("AboutValAndVar.scala", 
+            "AboutForExpressions.scala", 
+            "AboutLazySequences.scala",
+            "Master.scala",
+            "KoanSuite.scala",
+            "AboutTypeVariance.scala",
+            "AboutHigherOrderFunctions.scala",
+            "AboutImplicits.scala").contains(file.getName)
+}
+
+compile in Test <<= (org.scalastyle.sbt.PluginKeys.scalastyle, compile in Test) map { (errors, c) => 
+  if(errors > 0) error("One or more style rules failed")
+  else c 
+}
+

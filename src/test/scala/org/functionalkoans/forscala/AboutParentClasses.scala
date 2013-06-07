@@ -4,7 +4,7 @@ import support.KoanSuite
 
 class AboutParentClasses extends KoanSuite {
   koan("Class heirarchy is linear, a class can only extend from one parent class") {
-    class Worker(val firstName: String, val lastName: String) {}
+    class Worker(val firstName: String, val lastName: String) 
     class Employee(override val firstName: String, override val lastName: String,
                    val employeeID: Long) extends Worker(firstName, lastName)
     val me = new Employee("Name", "Yourself", 1233)
@@ -43,6 +43,6 @@ class AboutParentClasses extends KoanSuite {
 
     val employee = new Employee("Name", "Yourself", 2291)
     val assignment = new employee.Assignment(22)  //using the employee instance's path, create an assignment for it.
-    assignment.hours should be (__)
+    assignment.__ should be (22)
   }
 }

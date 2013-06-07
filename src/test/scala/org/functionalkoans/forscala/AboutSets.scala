@@ -53,7 +53,7 @@ class AboutSets extends KoanSuite {
     aNewSet.size should be(__)
   }
 
-  koan("Set elements can be removed with a tuple") {
+  koan("Multiple set elements can be removed") {
     val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
     val aNewSet = mySet - ("Michigan", "Ohio") // Notice: single '-' operator for tuples
 
@@ -71,9 +71,10 @@ class AboutSets extends KoanSuite {
 
   koan("Sets can be iterated easily") {
     val mySet = Set(1, 3, 4, 9)
-    var sum = 0
-    for (i <- mySet)
-      sum = sum + i
+    val sum = mySet.foldLeft(0){_ + _}
+    // var sum = 0
+    // for (i <- mySet)
+    //   sum = sum + i
 
     sum should be(__)
   }
@@ -109,7 +110,7 @@ class AboutSets extends KoanSuite {
 
   koan("The difference between two sets can be obtained easily") {
     val mySet1 = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-    val mySet2 = Set("Wisconsin", "Michigan")
+    val mySet2 = Set("Wisconsin", "Michigan", "Kansas")
     val aNewSet = mySet1 diff mySet2 // Note: you can use the "&~" operator if you *really* want to.
 
     aNewSet.equals(Set("Ohio", "Iowa")) should be(__)

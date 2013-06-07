@@ -25,6 +25,14 @@ class AboutAsserts extends KoanSuite with ShouldMatchers {
   }
 
   koan("sometimes we expect you to fill in the values") {
-    assert(__ == 1 + 1)
+    assert(1 + 1 === __)
   }
 }
+
+
+
+
+
+
+
+

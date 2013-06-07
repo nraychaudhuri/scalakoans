@@ -55,8 +55,8 @@ class AboutCaseClasses extends KoanSuite {
     case class Dog(name: String, breed: String)
 
     val d1 = Dog("Scooby", "Doberman")
-    d1.name should be(__)
-    d1.breed should be(__)
+    d1.name should be("Scooby")
+    d1.breed should be("Doberman")
 
     // what happens if you uncomment the line below? Why?
     //d1.name = "Scooby Doo"

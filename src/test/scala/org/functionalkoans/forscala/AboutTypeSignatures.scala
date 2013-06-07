@@ -69,7 +69,7 @@ class AboutTypeSignatures extends KoanSuite {
 
     val intRand = new IntRandomizer
     val rand: Randomizer[_] = intRand
-    rand.asInstanceOf[IntRandomizer].draw.isInstanceOf[Int] should be(true)
+    rand.asInstanceOf[IntRandomizer].draw.isInstanceOf[Int] should be(__)
   }
 
 

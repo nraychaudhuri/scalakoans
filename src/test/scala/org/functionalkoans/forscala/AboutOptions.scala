@@ -6,7 +6,7 @@ class AboutOptions extends KoanSuite {
 
   koan("Option can have one of two values - Some or None") {
     val someValue: Option[String] = Some("I am wrapped in something")
-    someValue.get should be(__)
+    someValue.get should be("I am wrapped in something")
 
     val nullValue: Option[String] = None
     nullValue should be(__)
@@ -50,6 +50,7 @@ class AboutOptions extends KoanSuite {
       case None => 0.0
     }
     value should be(__)
+
     val noValue: Option[Double] = None
     val value1 = noValue match {
       case Some(v) => v
@@ -73,17 +74,13 @@ class AboutOptions extends KoanSuite {
       }
     } should be(__)
 
-    var newValue1 = 0
-    Some(20) foreach {
-      newValue1 = _
-    }
-    newValue1 should be(__)
+    Some(20) map {
+      _ + 10
+    } should be(__)
 
-    var newValue2 = 0
-    None foreach {
-      newValue2 = _
-    }
-    newValue2 should be(__)
+    None map { x =>
+      10
+    } should be(__)
   }
 
   koan("Using Option to avoid if checks for null") {
@@ -121,7 +118,7 @@ class AboutOptions extends KoanSuite {
       someValue <- values
       value <- someValue
     } yield value
-    newValues should be(List(__, __, __))
+    newValues should be(__)
   }
 
   def maybeItWillReturnSomething(flag: Boolean): Option[String] = {

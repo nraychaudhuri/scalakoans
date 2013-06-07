@@ -5,7 +5,7 @@ import support.KoanSuite
 class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("Meet lambda. Anonymous function") {
-    def lambda = {
+    val lambda: Int => Int = {
       x: Int => x + 1
     }
     def result = List(1, 2, 3) map lambda
@@ -14,7 +14,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("Meet closure. Closure is any function that closes over the environment") {
     var incrementer = 1
-    def closure = {
+    val closure = {
       x: Int => x + incrementer
     }
     val result = List(1, 2, 3) map closure
@@ -26,18 +26,20 @@ class AboutHigherOrderFunctions extends KoanSuite {
 
   koan("function returning another function") {
     def addWithoutSyntaxSugar(x: Int) = {
-      new Function1[Int, Int]() {
-        def apply(y: Int): Int = x + y
-      }
+      (y: Int) => x + y
+
+      // new Function1[Int, Int]() {
+      //   def apply(y: Int): Int = x + y
+      // }
     }
-    addWithoutSyntaxSugar(1).isInstanceOf[Function1[_,_]] should be(__)
+    addWithoutSyntaxSugar(1).isInstanceOf[Function1[Int,Int]] should be(__)
 
     def add(x: Int) = (y: Int) => x + y
-    add(1).isInstanceOf[Function1[_,_]] should be(__)
-    add(2)(3) should be(__)
+    add(1).isInstanceOf[Function1[Int,Int]] should be(__)
+    add(2)(3) should be(5)
 
     def fiveAdder = add(5)
-    fiveAdder(5) should be(__)
+    __ should be(10)
   }
 
 
@@ -47,33 +49,33 @@ class AboutHigherOrderFunctions extends KoanSuite {
       xs map sideEffect
     }
 
-    makeUpper(List("abc", "xyz", "123")) should be(__)
+    makeUpper(List("abc", "xyz", "123")) should be(List("ABC", "XYZ", "123"))
 
     makeWhatEverYouLike(List("ABC", "XYZ", "123"), {
       x => x.toLowerCase
-    }) should be(__)
+    }) should be(List("abc", "xyz", "123"))
     //using it inline
-    List("Scala", "Erlang", "Clojure") map {_.length} should be(__)
+    List("Scala", "Erlang", "Clojure") map {_.length} should be(List(5, 6, 7))
   }
 
   koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
     def multiply(x: Int, y: Int) = x * y
-    (multiply _).isInstanceOf[Function2[_, _, _]] should be(__)
+    (multiply _).isInstanceOf[(Int, Int) => Int] should be(true)
     val multiplyCurried = (multiply _).curried
-    multiply(4, 5) should be(__)
-    multiplyCurried(3)(2) should be(__)
+    multiply(4, 5) should be(20)
+    multiplyCurried(3)(2) should be(6)
   }
 
   koan("Currying allows you to create specialized version of generalized function") {
-    def customFilter(f: Int => Boolean)(xs: List[Int]) = {
+    def customFilter(f: Int => Boolean)(xs: List[Int]): List[Int] = {
       xs filter f
     }
     def onlyEven(x: Int) = x % 2 == 0
     val xs = List(12, 11, 5, 20, 3, 13, 2)
-    customFilter(onlyEven)(xs) should be(__)
+    customFilter(onlyEven)(xs) should be(List(12, 20, 2))
 
-    val onlyEvenFilter = customFilter(onlyEven) _
-    onlyEvenFilter(xs) should be(__)
+    val onlyEvenFilter: List[Int] => List[Int]  = customFilter(onlyEven) _
+    onlyEvenFilter(xs) should be(List(12, 20, 2))
 
   }
 }

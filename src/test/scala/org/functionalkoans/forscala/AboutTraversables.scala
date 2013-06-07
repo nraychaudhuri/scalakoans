@@ -301,8 +301,8 @@ class AboutTraversables extends KoanSuite with ShouldMatchers {
           |  is also defined as (xs takeWhile p, xs dropWhile p)""") {
     val array = Array(87, 44, 5, 4, 200, 10, 39, 100)
     val result = array span (_ < 100)
-    result._1 should be(Array(87, 44, 5, 4))
-    result._2 should be(Array(200, 10, 39, 100))
+    result._1 should be(__)
+    result._2 should be(__)
   }
 
   koan( """partition will split a Traversable according to predicate, return
@@ -514,10 +514,10 @@ class AboutTraversables extends KoanSuite with ShouldMatchers {
 
   koan("Traversables can have views which allow you to efficiently do compound work.") {
     val lst = List(1, 2, 3)
-    var history = List[String]()
+    val history = scala.collection.mutable.ListBuffer[String]()
 
     def addHistory(s: String) {
-      history = history :+ s
+      history += s
     }
 
     lst.map {
@@ -534,7 +534,8 @@ class AboutTraversables extends KoanSuite with ShouldMatchers {
     history(4) should be(__)
     history(5) should be(__)
 
-    history = List[String]()
+    //removing all the elements from list buffer
+    history.clear()
 
     lst.view.map {
       x => addHistory("Doubling %s".format(x)); x * 2
