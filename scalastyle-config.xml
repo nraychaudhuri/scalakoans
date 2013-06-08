@@ -68,7 +68,7 @@
  <check level="warning" class="org.scalastyle.scalariform.NoWhitespaceBeforeLeftBracketChecker" enabled="false"></check>
  <check level="warning" class="org.scalastyle.scalariform.NoWhitespaceAfterLeftBracketChecker" enabled="false"></check>
  <check level="warning" class="org.scalastyle.scalariform.ReturnChecker" enabled="false"></check>
- <check level="warning" class="org.scalastyle.scalariform.NullChecker" enabled="false"></check>
+ <check level="error" class="org.scalastyle.scalariform.NullChecker" enabled="true"></check>
  <check level="warning" class="org.scalastyle.scalariform.NoCloneChecker" enabled="false"></check>
  <check level="warning" class="org.scalastyle.scalariform.NoFinalizeChecker" enabled="false"></check>
  <check level="warning" class="org.scalastyle.scalariform.CovariantEqualsChecker" enabled="false"></check>

@@ -41,7 +41,8 @@ org.scalastyle.sbt.PluginKeys.scalastyleFileFilter ~= {_ =>
             "AboutForExpressions.scala", 
             "AboutLazySequences.scala",
             "Master.scala",
-            "KoanSuite.scala",
+            "AboutOptions.scala",
+            "AboutTypeSignatures.scala",
             "AboutTypeVariance.scala",
             "AboutHigherOrderFunctions.scala",
             "AboutImplicits.scala").contains(file.getName)

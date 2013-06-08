@@ -26,9 +26,7 @@ trait KoanSuite extends FunSuite with ShouldMatchers {
   }
 
   private class ReportToTheMaster(other: Reporter) extends Reporter {
-    var failed = false
     def failure(event: Master.HasTestNameAndSuiteName) {
-      failed = true
       info("*****************************************")
       info("*****************************************")
       info("")
