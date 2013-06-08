@@ -50,21 +50,4 @@ class AboutLiteralStrings extends KoanSuite with ShouldMatchers {
     keeps the doctor away"""
     a.split('\n').size should be(__) //a.split('\n').size determines the number of lines
   }
-
-  koan("Use stripMargin to prettify multi-line strings") {
-
-   /*
-	  * Multiline String literals can use | to specify the starting position
-	  * of subsequent lines, then use stripMargin to remove the surplus indentation.
-	  */
-
-    val a = """An apple a day
-               |keeps the doctor away"""
-    a.stripMargin.split('\n')(1).charAt(0) should be(__)
-
-   /*
-	  * a.stripMargin.split('\n')(1).charAt(0)
-    * gets the first character of the second line
-	  */
-  }
 }

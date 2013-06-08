@@ -3,8 +3,24 @@ package org.functionalkoans.forscala
 import org.scalatest.matchers.ShouldMatchers
 import support.KoanSuite
 
-class AboutLiteralNumbers extends KoanSuite with ShouldMatchers {
-  koan("Integer Literals are 32-bit and can be created from decimal, octal, or hexadecimal") {
+class AboutLiterals extends KoanSuite with ShouldMatchers {
+
+  koan("""Boolean literals are either true or false, using the true or false keyword""") {
+    val a = true
+    val b = false
+    val c = 1 > 2
+    val d = 1 < 2
+    val e = a == c
+    val f = b == d
+    a should be(__)
+    b should be(__)
+    c should be(__)
+    d should be(__)
+    e should be(__)
+    f should be(__)
+  }
+
+    koan("Integer Literals are 32-bit and can be created from decimal, octal, or hexadecimal") {
     val a = 2
     val b = 31
     val c = 0x30F
@@ -67,7 +83,6 @@ class AboutLiteralNumbers extends KoanSuite with ShouldMatchers {
     i should be(__)
   }
 
-
   koan("""Trick: To distinguish the dot for a method invocation from the
           |   decimal point in a float or double literal,
           |   add a space after the literal""") {
@@ -76,5 +91,6 @@ class AboutLiteralNumbers extends KoanSuite with ShouldMatchers {
     (3.0 toString) should be(__)
     3d.toString should be(__)
   }
+
 
 }
