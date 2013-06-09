@@ -121,6 +121,18 @@ class AboutOptions extends KoanSuite {
     newValues should be(__)
   }
 
+  koan("Add each element of xs to all the elements of ys if the condition match") {
+    val xs = Vector(Some(10), Some(20), None, Some(15), Some(25), Some(30))
+    val ys = Vector(Some(2), None, None, Some(3), Some(4))
+
+    def condition(x: Int, y: Int): Boolean = (x + y) % 2 == 0
+
+    def addElements(xs: Vector[Option[Int]], ys: Vector[Option[Int]]) = __
+
+    addElements(xs, ys) should be(__)
+  }
+
+
   def maybeItWillReturnSomething(flag: Boolean): Option[String] = {
     if (flag) Some("Found value") else None
   }

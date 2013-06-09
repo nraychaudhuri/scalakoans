@@ -4,7 +4,6 @@ import support.KoanSuite
 
 class AboutPatternMatching extends KoanSuite {
 
-
   koan("Pattern matching returns something") {
 
     val stuff = "blue"
@@ -37,17 +36,14 @@ class AboutPatternMatching extends KoanSuite {
   koan("Pattern matching can match complex expressions") {
     def goldilocks(expr: Any) = expr match {
       case ("porridge", "Papa") => "Papa eating porridge"
-      case ("porridge", "Mama") => "Mama eating porridge"
       case ("porridge", "Baby") => "Baby eating porridge"
-      case _ => "what?"
     }
-
+    //should match "Mama eating porridge"
     goldilocks(("porridge", "Mama")) should be(__)
 
   }
 
   koan("Pattern matching can wildcard parts of expressions") {
-
     def goldilocks(expr: Any) = expr match {
       case ("porridge", _) => "eating"
       case ("chair", "Mama") => "sitting"
@@ -116,5 +112,20 @@ class AboutPatternMatching extends KoanSuite {
     patternEquals(3, 3) should be(__)
     patternEquals(7, 9) should be(__)
     patternEquals(9, 9) should be(__)
+  }
+
+  koan("Pattern matching can be used for collections") {
+    def sum(xs: Seq[Int], total: Int = 0): Int = xs match {
+      case h +: rest => sum(rest, total + h)
+      case Nil => total
+    } 
+    sum(Seq(1, 2, 3, 4)) should be(__)
+  }
+
+  koan("Find last but one element of the list") {
+    //use pattern matching to implement the method
+    def penultimate(xs: List[Int], default: Int = 0): Int = ___
+    penultimate(List(1, 10, 5, 6, 9)) should be(6) 
+    penultimate(Nil) should be(0) 
   }
 }

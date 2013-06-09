@@ -33,6 +33,4 @@ class AboutForExpressions extends KoanSuite {
     yield (x, y)
     coordinates(4) should be(__)
   }
-
-
 }

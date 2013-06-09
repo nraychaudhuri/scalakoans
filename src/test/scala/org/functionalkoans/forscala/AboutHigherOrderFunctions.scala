@@ -39,7 +39,7 @@ class AboutHigherOrderFunctions extends KoanSuite {
     add(2)(3) should be(5)
 
     def fiveAdder = add(5)
-    __ should be(10)
+    __ should be(__)
   }
 
 
@@ -49,21 +49,21 @@ class AboutHigherOrderFunctions extends KoanSuite {
       xs map sideEffect
     }
 
-    makeUpper(List("abc", "xyz", "123")) should be(List("ABC", "XYZ", "123"))
+    makeUpper(List("abc", "xyz", "123")) should be(__)
 
     makeWhatEverYouLike(List("ABC", "XYZ", "123"), {
       x => x.toLowerCase
-    }) should be(List("abc", "xyz", "123"))
+    }) should be(__)
     //using it inline
-    List("Scala", "Erlang", "Clojure") map {_.length} should be(List(5, 6, 7))
+    List("Scala", "Erlang", "Clojure") map {_.length} should be(__)
   }
 
   koan("Currying is a technique to transform function with multiple parameters to function with one parameter") {
     def multiply(x: Int, y: Int) = x * y
-    (multiply _).isInstanceOf[(Int, Int) => Int] should be(true)
+    (multiply _).isInstanceOf[(Int, Int) => Int] should be(__)
     val multiplyCurried = (multiply _).curried
-    multiply(4, 5) should be(20)
-    multiplyCurried(3)(2) should be(6)
+    multiply(4, 5) should be(__)
+    multiplyCurried(3)(2) should be(__)
   }
 
   koan("Currying allows you to create specialized version of generalized function") {
@@ -72,10 +72,10 @@ class AboutHigherOrderFunctions extends KoanSuite {
     }
     def onlyEven(x: Int) = x % 2 == 0
     val xs = List(12, 11, 5, 20, 3, 13, 2)
-    customFilter(onlyEven)(xs) should be(List(12, 20, 2))
+    customFilter(onlyEven)(xs) should be(__)
 
     val onlyEvenFilter: List[Int] => List[Int]  = customFilter(onlyEven) _
-    onlyEvenFilter(xs) should be(List(12, 20, 2))
+    onlyEvenFilter(xs) should be(__)
 
   }
 }

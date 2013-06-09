@@ -29,8 +29,8 @@ class Koans extends Suite {
     new AboutUniformAccessPrinciple,
     //fp    
     new AboutPatternMatching,
-    new AboutOptions,
     new AboutForExpressions,
+    new AboutOptions,
     new AboutHigherOrderFunctions,
     new AboutPartialFunctions,
     new AboutPartiallyAppliedFunctions,
