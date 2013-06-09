@@ -36,6 +36,12 @@ class Koans extends Suite {
     new AboutPartiallyAppliedFunctions,
     //implicits
     new AboutImplicits
+
+
+
+
+
+    
     //extra 
     //new AboutPreconditions,    
     //new AboutTypeSignatures,
