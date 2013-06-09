@@ -25,4 +25,10 @@ class AboutTuples extends KoanSuite {
     tuple5._2 should be(__)
     tuple5._5 should be(__)
   }
+
+  koan("You can return multiple values from methods") {
+    def leftAndRight(x: Int) = (x - 1, x + 1)
+
+    leftAndRight(10) should be(__)
+  }
 }

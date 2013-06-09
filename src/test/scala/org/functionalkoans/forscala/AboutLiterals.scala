@@ -5,36 +5,31 @@ import support.KoanSuite
 
 class AboutLiterals extends KoanSuite with ShouldMatchers {
 
-  koan("""Boolean literals are either true or false, using the true or false keyword""") {
+  koan("Boolean literals are either true or false, using the true or false keyword") {
     val a = true
     val b = false
     val c = 1 > 2
     val d = 1 < 2
-    val e = a == c
-    val f = b == d
     a should be(__)
     b should be(__)
     c should be(__)
     d should be(__)
-    e should be(__)
-    f should be(__)
   }
 
-    koan("Integer Literals are 32-bit and can be created from decimal, octal, or hexadecimal") {
+  koan("Integer Literals are 32-bit and can be created from decimal or hexadecimal") {
     val a = 2
     val b = 31
     val c = 0x30F
-    val e = 0
-    val f = -2
-    val g = -31
-    val h = -0x30F
+    val d = -2
+    val e = -0x30F
     a should be(__)
     b should be(__)
     c should be(__) //Hint: 30F = 783
-    e should be(__)
-    f should be(__)
-    g should be(__)
-    h should be(__) //Hint: 30F = 783
+    d should be(__)
+    e should be(__) //Hint: 30F = 783
+
+    //octal literal is deprecated: 
+    //http://stackoverflow.com/questions/16590236/scala-2-10-octal-escape-is-deprecated-how-to-do-octal-idiomatically-now
   }
 
   koan("""Long Literals are 64 bit, are specified by appending an L or l at the end;
@@ -67,20 +62,12 @@ class AboutLiterals extends KoanSuite with ShouldMatchers {
     val c = 2.73
     val d = 3f
     val e = 3.22d
-    val f = 93e-9
-    val g = 93E-9
-    val h = 0.0
-    val i = 9.23E-9D
 
     a should be(__)
     b should be(__)
     c should be(__)
     d should be(__)
     e should be(__)
-    f should be(__)
-    g should be(__)
-    h should be(__)
-    i should be(__)
   }
 
   koan("""Trick: To distinguish the dot for a method invocation from the

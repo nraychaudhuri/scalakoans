@@ -13,9 +13,9 @@ class AboutParentClasses extends KoanSuite {
   }
 
   koan("A class that extends from another is polymorphic") {
-    class Worker(val firstName: String, val lastName: String) {}
+    class Worker(val firstName: String, val lastName: String)
     class Employee(override val firstName: String, override val lastName: String,
-                   val employeeID: Long) extends Worker(firstName, lastName)
+                   val employeeID: Long) extends Worker(___, ___)
 
     val me = new Employee("Name", "Yourself", 1233)
     val worker: Worker = me
@@ -25,10 +25,15 @@ class AboutParentClasses extends KoanSuite {
   }
 
   koan("An abstract class, as in Java, cannot be instantiated and only inherited") {
-    abstract class Worker(val firstName: String, val lastName: String) {}
+    abstract class Worker(val firstName: String, val lastName: String) {
+      override def toString = lastName + ", " + firstName
+    }
 
     // if you uncomment this line, if will fail compilation
     //val worker = new Worker
+
+    //but can you create an instance of Worker and check the toString
+    ___.toString should be("Ray, Nil")
   }
 
 

@@ -21,14 +21,6 @@ class AboutSets extends KoanSuite {
 
   }
 
-  koan("Sets may be of mixed type") {
-    val mySet = Set("Michigan", "Ohio", 12)
-
-    mySet.contains(12) should be(__)
-
-    mySet.contains("MI") should be(__)
-  }
-
   koan("Sets may be accessed") {
     val mySet = Set("Michigan", "Ohio", 12)
 
@@ -42,15 +34,6 @@ class AboutSets extends KoanSuite {
     val aNewSet = mySet - "Michigan"
 
     aNewSet.contains("Michigan") should be(__)
-  }
-
-  koan("Set elements can be removed in multiple") {
-    val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-    val aNewSet = mySet -- List("Michigan", "Ohio")
-
-    aNewSet.contains("Michigan") should be(__)
-    aNewSet.contains("Wisconsin") should be(__)
-    aNewSet.size should be(__)
   }
 
   koan("Multiple set elements can be removed") {
@@ -72,10 +55,6 @@ class AboutSets extends KoanSuite {
   koan("Sets can be iterated easily") {
     val mySet = Set(1, 3, 4, 9)
     val sum = mySet.foldLeft(0){_ + _}
-    // var sum = 0
-    // for (i <- mySet)
-    //   sum = sum + i
-
     sum should be(__)
   }
 

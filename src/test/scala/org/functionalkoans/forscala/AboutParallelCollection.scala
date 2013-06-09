@@ -7,15 +7,15 @@ class AboutParallelCollection extends KoanSuite {
   koan("running time consuming operation in sequence") {
     val someNumbers = 1 to 5 toVector
     val (_, time) = timeIt {
-      someNumbers.map(someTimeConsumingOperation)
+      someNumbers.map(x => takes500MillsToOperate(x))
     }
     (time < (500 * 5))  should be(__)
   }
 
-  koan("Running computation in parallel") {
+  koan("Running computation in parallel. By converting sequential collection to parallel") {
     val someNumbers = 1 to 5 toVector
     val (_, time) = timeIt {
-      someNumbers.par.map(someTimeConsumingOperation)
+      someNumbers.par.map(x => takes500MillsToOperate(x))
     }
     (time < (500 * 5))  should be(__)
   } 
@@ -24,7 +24,7 @@ class AboutParallelCollection extends KoanSuite {
     val someNumbers = 1 to 5 toVector
     val (_, time) = timeIt {
       someNumbers.par.foldLeft(0){(acc, elem) =>
-        acc + someTimeConsumingOperation(elem)
+        acc + takes500MillsToOperate(elem)
       }
     }
     (time < (500 * 5))  should be(__)
@@ -38,7 +38,7 @@ class AboutParallelCollection extends KoanSuite {
     (work, e - s)
   }
 
-  def someTimeConsumingOperation(i: Int): Int = {
+  def takes500MillsToOperate(i: Int): Int = {
     Thread.sleep(500)
     i + 1
   }

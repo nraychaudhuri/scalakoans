@@ -37,8 +37,6 @@ class AboutMaps extends KoanSuite {
     val lastElement = mapValues.last
     lastElement should be(__)
 
-    // for (mval <- mapValues) println(mval)
-
     // NOTE that the following will not compile, as iterators do not implement "contains"
     //mapValues.contains("Illinois") should be (true)
   }
@@ -93,27 +91,6 @@ class AboutMaps extends KoanSuite {
 
       myMap("MI") should be("some value")
     }
-  }
-
-  koan("Map elements can be removed in multiple") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-
-
-    val aNewMap = myMap -- List("MI", "OH")
-
-    aNewMap.contains("MI") should be(false)
-
-    aNewMap.contains("WI") should be(true)
-    aNewMap.size should be(2)
-  }
-
-  koan("Map elements can be removed with a tuple") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    val aNewMap = myMap - ("MI", "WI") // Notice: single '-' operator for tuples
-
-    aNewMap.contains("MI") should be(false)
-    aNewMap.contains("OH") should be(true)
-    aNewMap.size should be(2)
   }
 
   koan("Attempted removal of nonexistent elements from a map is handled gracefully") {

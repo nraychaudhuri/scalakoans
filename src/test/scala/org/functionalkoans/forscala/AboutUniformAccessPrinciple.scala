@@ -31,22 +31,22 @@ class AboutUniformAccessPrinciple extends KoanSuite {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
     // uncomment following line to see what happens if you try to access parameterless method with parens
     //me.age() should be (7)
+    
+    //but you can drop parenthesis from no argument method 
+    def age() = 25
+    age should be(__) 
+    age() should be(__) 
+
   }
   koan("What happens when I update current year using property") {
     val me = new CalculatesAgeUsingProperty(2010, 2003)
-
-
     me.currentYear = 2011
     me.age should be(__)
   }
 
   koan("What happens when I update current year using method") {
     val me = new CalculatesAgeUsingMethod(2010, 2003)
-
-
     me.currentYear = 2011
     me.age should be(__)
   }
-
-
 }
