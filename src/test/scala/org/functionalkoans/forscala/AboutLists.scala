@@ -49,7 +49,7 @@ class AboutLists extends KoanSuite {
     a(4) should equal(__)
 
     intercept[IndexOutOfBoundsException] {
-      println(a(5))
+      ___
     }
   }
 
@@ -127,5 +127,14 @@ class AboutLists extends KoanSuite {
     c.tail should be(__)
   }
 
+  koan("Foldleft is quite useful and can be used in many ways") {
+    def exists(xs: List[Int], x: Int): Boolean = xs.foldLeft(___)(___)
+    def delete(xs: List[Int], x: Int): List[Int] = xs.foldLeft(___)(___)
+
+    exists(List(1, 2, 3, 4), 2) should be(true)
+    exists(List(1, 2, 3, 4), 20) should be(false)
+    delete(List(10, 20, 30, 40), 30) should be(List(10, 20, 40))
+    delete(List(10, 20, 30, 40), 300) should be(List(10, 20, 30, 40))
+  }
 
 }

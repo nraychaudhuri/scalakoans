@@ -8,8 +8,6 @@ class Koans extends Suite {
     //basic
     new AboutAsserts,
     new AboutValAndVar,
-    new AboutLiterals,
-    new AboutLiteralStrings,
     new AboutExpressionsAndStatments,
     new AboutMethodsAndFunctions,
     new AboutRange,
@@ -54,7 +52,10 @@ class Koans extends Suite {
     // new AboutFormatting,
     //new AboutManifests,
     //new AboutTypeVariance,
-    //new AboutEnumerations    
+    //new AboutEnumerations ,
+    //new AboutLiterals,
+    //new AboutLiteralStrings,
+   
   )
 
   override def run(testName: Option[String], reporter: Reporter, stopper: Stopper, filter: Filter,

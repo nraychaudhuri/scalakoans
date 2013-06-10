@@ -72,9 +72,10 @@ class AboutHigherOrderFunctions extends KoanSuite {
     }
     def onlyEven(x: Int) = x % 2 == 0
     val xs = List(12, 11, 5, 20, 3, 13, 2)
+
     customFilter(onlyEven)(xs) should be(__)
 
-    val onlyEvenFilter: List[Int] => List[Int]  = customFilter(onlyEven) _
+    val onlyEvenFilter: List[Int] => List[Int]  = ___
     onlyEvenFilter(xs) should be(__)
 
   }

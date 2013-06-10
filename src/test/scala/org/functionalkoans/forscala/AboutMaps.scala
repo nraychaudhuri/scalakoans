@@ -89,7 +89,7 @@ class AboutMaps extends KoanSuite {
     // Cheat Code (because this is hard to illustrate): uncomment the intercept code to make this pass 
     intercept[NoSuchElementException] {
 
-      myMap("MI") should be("some value")
+      myMap("MI") should be(__)
     }
   }
 
@@ -97,7 +97,7 @@ class AboutMaps extends KoanSuite {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - "MN"
 
-    aNewMap.equals(myMap) should be(true)
+    aNewMap.equals(myMap) should be(__)
   }
 
   koan("Map equivalency is independent of order") {
@@ -105,8 +105,7 @@ class AboutMaps extends KoanSuite {
     val myMap1 = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val myMap2 = Map("WI" -> "Wisconsin", "MI" -> "Michigan", "IA" -> "Iowa", "OH" -> "Ohio")
 
-    myMap1.equals(myMap2) should be(true)
+    myMap1.equals(myMap2) should be(__)
   }
-
 
 }

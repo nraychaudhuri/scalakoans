@@ -15,7 +15,7 @@ class AboutExpressionsAndStatments extends KoanSuite with ShouldMatchers {
     val a = println("there is no void in scala")
     a should be(__)
     
-    val b = try { 10 } catch { case _ => 5 }
+    val b = try { 10 } catch { case _: Throwable => 5 }
     b should be(__)
   }
 

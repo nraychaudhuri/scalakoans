@@ -243,11 +243,11 @@ class AboutTraits extends KoanSuite {
       override def name = "D"
     }
     
-    val confused = new D with A with B with C     
-    confused.name should be(__)
+    val confused: WhoAmI = ___     
+    confused.name should be("C -> B -> A -> D")
 
-    val another = new D with C with B with A    
-    another.name should be(__)
+    val another: WhoAmI = ___    
+    another.name should be("A -> B -> C -> D")
   }
 
 }
